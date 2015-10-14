@@ -1,0 +1,28 @@
+VIEW
+------------
+
+As a user I can view a map of restaurants
+
+As a user I can see restaurant ratings
+
+As a user I can select a restaurant to view more details
+
+As a user I can read reviews
+
+As a user I want to filter by meal (dinner, lunch, breakfast)
+
+As a user I want to filter by city
+
+As a user I want to filter by neighbourhood
+
+
+CONTRIBUTE
+------------
+
+As a user I want to log in so I can contribute
+
+As a user I want to be able to write a review
+
+As a user I want to see ratings for a restaurant
+
+As a user I want to be able to rate a restaurant
