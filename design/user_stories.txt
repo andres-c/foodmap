@@ -9,20 +9,22 @@ As a user I should be able to select a restaurant to view more details
 
 As a user I should be able to read reviews
 
-As a user I want to be able to to filter by meal (dinner, lunch, breakfast)
+As a user I want to be able to filter by meal (dinner, lunch, breakfast)
 
-As a user I want to be able to to filter by city
+As a user I want to be able to filter by city
 
-As a user I want to be able to to filter by neighbourhood
+As a user I want to be able to filter by neighbourhood
 
 
-CONTRIBUTE
+USE
 ------------
 
-As a user I want to be able to to log in so I can contribute
+As a user I want to be able to log in so I can contribute
 
-As a user I want to be able to to be able to write a review
+As a user I want to be able to be able to write a review
 
-As a user I want to be able to to see ratings for a restaurant
+As a user I want to be able to see ratings for a restaurant
 
-As a user I want to be able to to be able to rate a restaurant
+As a user I want to be able to be able to rate a restaurant
+
+As a user I want to be able to save restaurants (hit list)

@@ -1,0 +1,30 @@
+PAGES
+----------
+
+Map page
+/map
+Will have a map
+Would be nice if it also had filtering
+Would be nice if it also had list of restaurants below
+
+Show restaurant page
+/restaurant/id
+Restaurant info (phone, address, hours, cuisine)
+Zomato rating, Zomato reviews
+FoodMap rating, FoodMap review
+
+Signup/Login
+/login
+Allows user to sign up and login
+
+My Reviews
+/username/reviews
+Shows user a list of their reviews, where they can manage them
+
+"Hit List"
+/username/hitlist
+Shows user a list of their saved restaurants
+
+Admin
+/admin
+Manage users and reviews/ratings
