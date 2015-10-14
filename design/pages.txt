@@ -17,12 +17,13 @@ Signup/Login
 /login
 Allows user to sign up and login
 
-My Reviews
-/username/reviews
-Shows user a list of their reviews, where they can manage them
+My Reviews / Profile
+/profile/username
+Shows a list of the users reviews
+User can manage their reviews if its their own profile
 
 "Hit List"
-/username/hitlist
+/hitlist/username
 Shows user a list of their saved restaurants
 
 Admin
