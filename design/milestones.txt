@@ -1,18 +1,20 @@
 MILESTONES
 ------------
 
-????
+Get map working
 
 Pulling & displaying info from Zomato
-
-Get map working
 
 App That Works
 
 App That Works and Looks Good
+
+Implement filtering
 
 Make map more mobile friendly?
 
 Implement users / logging in
 
 Implement our own rating system
+
+Implement admin console to moderate user system?
