@@ -1,0 +1,18 @@
+MILESTONES
+------------
+
+????
+
+Pulling & displaying info from Zomato
+
+Get map working
+
+App That Works
+
+App That Works and Looks Good
+
+Make map more mobile friendly?
+
+Implement users / logging in
+
+Implement our own rating system
