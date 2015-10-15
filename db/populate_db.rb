@@ -19,14 +19,16 @@ loop do
 
   result_hash = JSON(result_string)
 
-  restaurants += result_hash["restaurants"]
+  restaurants +=  result_hash["restaurants"]
 
   result_count += 20
   puts "#{[result_count, result_hash['results_found']].min} / #{result_hash['results_found']} results parsed" if result_count % 100 == 0 || result_count >= result_hash['results_found']
-  break if result_count >= result_hash['results_found']
+  break if result_count >= 100
 end
 
 restaurants.each do |restaurant|
   restaurant = restaurant['restaurant']
   Restaurant.create(name: restaurant['name'], zomato_id: restaurant['id'], address: restaurant['location']['address'], locality: restaurant['location']['locality'], latitude: restaurant['location']['latitude'], longitude: restaurant['location']['longitude'], zomato_rating: restaurant['user_rating']['aggregate_rating'])
 end
+
+964
