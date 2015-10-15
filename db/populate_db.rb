@@ -30,5 +30,3 @@ restaurants.each do |restaurant|
   restaurant = restaurant['restaurant']
   Restaurant.create(name: restaurant['name'], zomato_id: restaurant['id'], address: restaurant['location']['address'], locality: restaurant['location']['locality'], latitude: restaurant['location']['latitude'], longitude: restaurant['location']['longitude'], zomato_rating: restaurant['user_rating']['aggregate_rating'])
 end
-
-964

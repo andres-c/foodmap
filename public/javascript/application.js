@@ -11,3 +11,5 @@ $(document).ready(function() {
 $(document).on("click", "#signup-button", function() {
   $('#sign_up_modal').openModal();
   });
+
+
