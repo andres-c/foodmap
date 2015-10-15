@@ -16,14 +16,7 @@
     </style>
   </head>
   <body>
-    <% qualified = [] %>
     <div id="map"></div>
-    <% Restaurant.where("longitude <= ?", -79.4).each do |restaurant| %>
-      <% qualified.push(restaurant) %>
-    <% end %>
-    <% qualified.each do |rest| %>
-      <%= rest.longitude %>
-    <% end %>
     <script>
 // Note: This example requires that you consent to location sharing when
 // prompted by your browser. If you see the error "The Geolocation service
@@ -47,16 +40,16 @@
           icon: image
         });
 
-        google.maps.event.addListener(map, 'bounds_changed', function() {
-          a = map.getBounds();
+        google.maps.event.addListener(map, 'idle', function() {
+          bounds = map.getBounds();
           $.get("/restaumap", {
-            lat1: a.Pa.I,
-            lat2: a.Pa.j,
-            lon1: a.La.I,
-            lon2: a.La.j
+            lat1: bounds.Pa.I,
+            lat2: bounds.Pa.j,
+            lon1: bounds.La.I,
+            lon2: bounds.La.j
           } )
             .done (function(restaurants){
-              console.log(a.Pa.I);
+              console.log(restaurants);
             });
         });
 
@@ -96,4 +89,3 @@
     </script>
   </body>
 </html>
-
