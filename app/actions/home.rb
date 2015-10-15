@@ -1,4 +1,8 @@
 # Homepage (Root path)
 get '/' do
-  erb :index
+  redirect '/map'
+end
+
+get '/map' do
+  erb :map 
 end
