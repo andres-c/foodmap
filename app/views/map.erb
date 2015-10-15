@@ -28,16 +28,6 @@
         var map = new google.maps.Map(document.getElementById('map'), {
           center: {lat: 43.6561, lng: -79.3803},
           zoom: 15,
-          mapTypeId: google.maps.MapTypeId.ROADMAP
-        });
-        // Setting up new markets with location
-        // Need to get restaurant data from db and load in
-        // Want to query the database and only show areas around us in google maps
-        var image = 'restaurant.png';
-        var marker = new google.maps.Marker({
-          position: {lat: 43.6561, lng: -79.3803}, 
-          map: map,
-          icon: image
         });
 
         google.maps.event.addListener(map, 'idle', function() {
@@ -50,6 +40,26 @@
           } )
             .done (function(restaurants){
               console.log(restaurants);
+
+              var image = 'restaurant.png';
+              var marker = "";
+              var lat = 0;
+              var lon = 0;
+
+              var data = JSON.parse(restaurants);
+              console.log(data);
+              for (var i = 0; i < data.length; i++) {
+                lat = data[i].latitude;
+                lon = data[i].longitude;
+
+                // console.log(Number(lat))
+
+                marker = new google.maps.Marker({
+                  position: {lat: Number(lat), lng: Number(lon)}, 
+                  map: map,
+                  icon: image
+                });
+              };
             });
         });
 
