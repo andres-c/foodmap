@@ -1,0 +1,4 @@
+.env
+.bundle
+.DS_Store
+public/assets

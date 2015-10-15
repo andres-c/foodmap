@@ -17,9 +17,13 @@ ActiveRecord::Schema.define(version: 20151014213759) do
   enable_extension "plpgsql"
 
   create_table "restaurants", force: :cascade do |t|
-    t.string  "name",      null: false
-    t.string  "address",   null: false
-    t.integer "zomato_id", null: false
+    t.string  "name",          null: false
+    t.string  "address",       null: false
+    t.string  "locality",      null: false
+    t.integer "zomato_id",     null: false
+    t.decimal "zomato_rating", null: false
+    t.decimal "latitude",      null: false
+    t.decimal "longitude",     null: false
   end
 
 end

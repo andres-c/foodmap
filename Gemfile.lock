@@ -76,6 +76,7 @@ PLATFORMS
 
 DEPENDENCIES
   activesupport
+  json
   pg
   pry
   puma
