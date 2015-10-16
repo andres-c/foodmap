@@ -72,11 +72,13 @@
 
         function showInfo(marker, title, rating, address, id) {
           marker['content'] = 
-            "<h3 class ='content-title'>" + title +'</h3> <hr/>' //Title
+            "<h3 class ='content-title'>" + title +'</h3>' //Title
+            + '<p class ="card_rating">Rating: ' + rating  +'<hr/>'//Rating
             + address //Address
-            + '<p>Rating: ' + rating //Rating
             + '</p> <a class="save" href="#"> <img src="save.jpeg" height="25" width="25"></a>' //Save button
+            +  '<div class="right">'
             + '<a href="#"><button class = "view-reviews"> View Reviews</a></button>' //Button
+            + '</div>'
 
           google.maps.event.addListener(marker, "click", function () {
             infoWindow.setContent(this['content']);
