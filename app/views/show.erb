@@ -1,6 +1,21 @@
 <div class="container">
-  <h1><%= @restaurant[:name] %></h1>
+  <div class="row fixed">
+    <div class="col s6">
+      <h1><%= @restaurant[:name] %></h1>
+    </div>
+    <div class="col s6 right-align">
+      <h2><%= @restaurant[:zomato_rating] %> <small>/ 5</small></h2>
+    </div>
+  </div>
   <h4><%= @restaurant[:locality] %></h4>
   <h5><%= @restaurant[:address] %></h5>
-  <h2><%= @restaurant[:zomato_rating] %></h2>
+
+  <%= '<h3>Reviews</h3>' if @restaurant.reviews %>
+  <% @restaurant.reviews.each do |review| %>
+    <hr/>
+    <h6><%= "<strong>#{review.rating}</strong> - #{review.username}" %></h6>
+    <p><%= review.body %></p>
+    <p><small>Posted on <%= review.created_at.to_date.strftime("%B %y, %Y") %></small></p>
+  <% end %>
+
 </div>
