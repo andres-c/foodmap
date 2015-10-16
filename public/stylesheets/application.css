@@ -6,4 +6,22 @@
 .row.headers h2 {
   line-height: 45px;
   margin-top: 45px;
+  display: inline-block;
+}
+
+.upvote-box {
+  height: 100px;
+  width: 100px;
+}
+
+.z-rating * {
+  line-height: 20px;
+}
+
+.updown {
+  display: inline-block;
+}
+
+.updown h6 {
+  font-size: 18px;
 }
