@@ -12,6 +12,7 @@ gem 'json'
 
 gem 'puma'
 gem 'tux'
+gem 'bcrypt'
 
 group :development, :test do
   gem 'pry'
