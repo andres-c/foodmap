@@ -5,6 +5,7 @@ post '/restaumap' do
       id: restaurant.id,
       name: restaurant.name,
       address: restaurant.address,
+      rating: restaurant.voted_rating,
       zomato_rating: restaurant.zomato_rating,
       latitude: restaurant.latitude,
       longitude: restaurant.longitude

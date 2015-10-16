@@ -40,3 +40,17 @@
   cursor: pointer;
   font-size: 18px;
 }
+
+.vote-graphic {
+  font-size: 18px;
+}
+
+.vote-button.up,
+.vote-graphic.up {
+  color: green;
+}
+
+.vote-button.down,
+.vote-graphic.down {
+  color: red;
+}
