@@ -2,6 +2,16 @@
   font-size: 12px;
 }
 
+.content-title {
+  font-size: 20px;
+  line-height: 35px;
+}
+
+.card_rating {
+  font-size: 17px;
+  line-height: 2px;
+}
+
 .row.headers h1,
 .row.headers h2 {
   line-height: 45px;
