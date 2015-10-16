@@ -9,5 +9,3 @@ get '/map' do
   end
   erb :map 
 end
-
-
