@@ -5,6 +5,7 @@ $(document).ready(function() {
   // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
   $('.modal-trigger').leanModal();
  
+  $('.tabs-wrapper .row').pushpin({ top: $('.tabs-wrapper').offset().top });
 });
 
 //Opens sign_up_modal

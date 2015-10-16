@@ -15,3 +15,6 @@ get '/show/:id' do
   erb :show
 end
 
+get '/favourites' do
+  erb :favourites
+end
