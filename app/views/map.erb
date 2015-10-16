@@ -30,10 +30,10 @@
           zoom: 15,
         });
 
-      var contentString =
-          '<p><b>Uluru</b>, also referred to as <b>Ayers Rock</b>, is a large</p>';
-
-      var markerArr = [];
+        markerArr = [];
+        idArr = [];
+        
+        infoWindow = new google.maps.InfoWindow();
 
         google.maps.event.addListener(map, 'idle', function() {
           bounds = map.getBounds();
@@ -44,31 +44,33 @@
             lon2: bounds.La.j
           } )
             .done (function(restaurants){
-              removeMarkers(markerArr);
               var image = 'restaurant.png';
-              infoWindow = new google.maps.InfoWindow();
 
               var data = JSON.parse(restaurants);
               for (var i = 0; i < data.length; i++) {
                 search = data[i];
 
-                marker = new google.maps.Marker({
-                  position: {lat: Number(search.latitude), lng: Number(search.longitude)}, 
-                  map: map,
-                  icon: image,
-                  clickable: true,
-                  title: search.name
-                });
+                // debugger
 
-                markerArr.push(marker);
+                if ($.inArray(search.id, idArr) < 0) { 
+                  var marker = new google.maps.Marker({
+                    position: {lat: Number(search.latitude), lng: Number(search.longitude)}, 
+                    map: map,
+                    icon: image,
+                    clickable: true,
+                    title: search.name,
+                    id: search.id
+                  });
 
-                showMarker(marker, search.name, search.zomato_rating, search.address, search.id);
+                  idArr.push(marker.id);
 
+                  showInfo(marker, search.name, search.zomato_rating, search.address, search.id);
+                }
               };
             });
-        });
 
-        function showMarker(marker, title, rating, address, id) {
+
+        function showInfo(marker, title, rating, address, id) {
           marker['content'] = 
             "<h3 class ='content-title'>" + title +'</h3> <hr/>' //Title
             + address //Address
@@ -83,12 +85,7 @@
           marker;
         };
 
-        function removeMarkers(markerArr) {
-          for (i = 0; i < markerArr.length; i++) {
-            markerArr[i].setMap(null);
-          }
-        }
-
+        });
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(function(position) {
             var pos = {
