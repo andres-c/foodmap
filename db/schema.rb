@@ -53,5 +53,4 @@ ActiveRecord::Schema.define(version: 20151016150703) do
     t.integer "restaurant_id"
     t.decimal "value"
   end
-
 end
