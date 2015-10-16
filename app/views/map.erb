@@ -58,33 +58,21 @@
                   clickable: true,
                   title: title
                 });
-                marker['content'] = marker.title
-                google.maps.event.addListener(marker, "click", function () {
-                    infoWindow.setContent(this['content']);
-                    infoWindow.open(map, this);
-                });
-                marker;
 
-
-                // displayBox(marker);
+                showMarker(marker);
 
               };
             });
         });
 
-        // function displayBox(marker) {
-        //   // infowindow = new google.maps.InfoWindow();{
-        //   //   content: marker.title
-        //   // });
-
-        //   infoWindow = new google.maps.InfoWindow();
-          
-        //   // console.log(infowindow)
-        //   marker.addListener('click', function() {
-        //     infowindow.open(map, marker);
-        //   });
-        // }
-
+        function showMarker(marker) {
+          marker['content'] = marker.title
+          google.maps.event.addListener(marker, "click", function () {
+            infoWindow.setContent(this['content']);
+            infoWindow.open(map, this);
+          });
+          marker;
+        };
 
         // Try HTML5 geolocation.
         if (navigator.geolocation) {
