@@ -42,10 +42,10 @@ ActiveRecord::Schema.define(version: 20151016150703) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string  "username", null: false
-    t.string  "email",    null: false
-    t.string  "password", null: false
-    t.boolean "isAdmin",  null: false
+    t.string  "username",        null: false
+    t.string  "email",           null: false
+    t.string  "password_digest", null: false
+    t.boolean "isAdmin",         null: false
   end
 
   create_table "votes", force: :cascade do |t|
@@ -53,5 +53,4 @@ ActiveRecord::Schema.define(version: 20151016150703) do
     t.integer "restaurant_id"
     t.decimal "value"
   end
-
 end

@@ -14,3 +14,13 @@
   left: 50%;
   top: 45%;
 }
+
+.content-title {
+  font-size: 20px;
+  line-height: 35px;
+}
+
+.card_rating {
+  font-size: 17px;
+  line-height: 2px;
+}

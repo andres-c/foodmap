@@ -4,10 +4,14 @@ get '/' do
 end
 
 get '/map' do
-  erb :map
+  if session[:user_id]
+    @user = User.find(session[:user_id])
+  end
+  erb :map 
 end
 
 get '/show/:id' do
   @restaurant = Restaurant.find(params[:id])
   erb :show
 end
+
