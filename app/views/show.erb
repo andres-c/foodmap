@@ -6,8 +6,16 @@
     <div class="col s4 right-align">
       <h2><%= @restaurant.voted_rating %>&nbsp;</h2>
       <div class="updown">
-        <h6>&#x25B2;</h6>
-        <h6>&#x25BC;</h6>
+        <form method="post" action="vote">
+          <input type="hidden" name="restaurant_id" value="<%= @restaurant.id %>"/>
+          <input type="hidden" name="value" value="1"/>
+          <input class="vote-button" type="submit" value="&#x25B2;"/>
+        </form>
+        <form method="post" action="vote">
+          <input type="hidden" name="restaurant_id" value="<%= @restaurant.id %>"/>
+          <input type="hidden" name="value" value="-1"/>
+          <input class="vote-button" type="submit" value="&#x25BC;"/>
+        </form>
       </div>
     </div>
   </div>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151016192226) do
+ActiveRecord::Schema.define(version: 20151016222555) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,16 +22,16 @@ ActiveRecord::Schema.define(version: 20151016192226) do
   end
 
   create_table "restaurants", force: :cascade do |t|
-    t.string  "name",          null: false
-    t.string  "address",       null: false
-    t.string  "locality",      null: false
-    t.integer "zomato_id",     null: false
-    t.decimal "zomato_rating", null: false
-    t.decimal "latitude",      null: false
-    t.decimal "longitude",     null: false
-    t.integer "upvotes"
-    t.integer "downvotes"
-    t.integer "total_votes"
+    t.string  "name",                      null: false
+    t.string  "address",                   null: false
+    t.string  "locality",                  null: false
+    t.integer "zomato_id",                 null: false
+    t.decimal "zomato_rating",             null: false
+    t.decimal "latitude",                  null: false
+    t.decimal "longitude",                 null: false
+    t.integer "upvotes",       default: 0, null: false
+    t.integer "downvotes",     default: 0, null: false
+    t.integer "total_votes",   default: 0, null: false
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -56,4 +56,5 @@ ActiveRecord::Schema.define(version: 20151016192226) do
     t.integer "restaurant_id"
     t.integer "value"
   end
+
 end

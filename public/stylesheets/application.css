@@ -32,6 +32,11 @@
   display: inline-block;
 }
 
-.updown h6 {
+.vote-button {
+  background:none!important;
+  border:none; 
+  padding:0!important;
+  font: inherit;
+  cursor: pointer;
   font-size: 18px;
 }
