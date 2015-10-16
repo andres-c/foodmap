@@ -1,0 +1,9 @@
+.content-title {
+  font-size: 12px;
+}
+
+.row.headers h1,
+.row.headers h2 {
+  line-height: 45px;
+  margin-top: 45px;
+}
