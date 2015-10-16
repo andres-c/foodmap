@@ -7,3 +7,10 @@
   line-height: 45px;
   margin-top: 45px;
 }
+
+.preloader-wrapper {
+  position: fixed;
+  margin: 0 auto;
+  left: 50%;
+  top: 45%;
+}
