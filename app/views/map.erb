@@ -11,7 +11,7 @@
         padding: 0;
       }
       #map {
-        height: 80%;
+        height: 75%;
       }
     </style>
   </head>
@@ -32,6 +32,7 @@
     
     </div>
     <script>
+
       function initMap() {
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(function(position) {
@@ -62,12 +63,10 @@
       function loadMap(position) {
         var map = new google.maps.Map(document.getElementById('map'), {
           center: position,
-          zoom: 15,
+          zoom: 16,
         });
 
-        markerArr = [];
-        idArr = [];
-        
+        idArr = [];    
         infoWindow = new google.maps.InfoWindow();
 
         google.maps.event.addListener(map, 'idle', function() {
@@ -80,14 +79,15 @@
           } )
             .done (function(restaurants){
               var image = 'restaurant.png';
+              markerArr = [];
+
 
               var data = JSON.parse(restaurants);
               for (var i = 0; i < data.length; i++) {
                 search = data[i];
+                markerArr.push(data[i]);
 
-                // debugger
-
-                if ($.inArray(search.id, idArr) < 0) { 
+                if ($.inArray(search.id, idArr) < 0) { //if statement is false it will return -1
                   var marker = new google.maps.Marker({
                     position: {lat: Number(search.latitude), lng: Number(search.longitude)}, 
                     map: map,
@@ -97,27 +97,26 @@
                     id: search.id
                   });
 
-                  markerArr.push(marker);
                   idArr.push(marker.id);
 
                   showInfo(marker, search.name, search.zomato_rating, search.rating, search.address, search.id);
                 }
               };
+              topAlgo();
             });
-
 
         function showInfo(marker, title, zomato_rating, foodmap_rating, address, id) {
           marker['content'] = 
             "<h3 class ='content-title'>" + title +'</h3> <hr/>' //Title
             + '<p class="card_rating">Rating: ' + foodmap_rating //Our rating
-            + '<p class="zomato_rating">Zomato Rating: ' + zomato_rating + '</br></br>'//Rating
-            + address //Address
+            + '<p class="zomato_rating">Zomato Rating: ' + zomato_rating + ' / 5</br></br>'//Rating
+            + "<span class = 'address'>" + address + "</span>" //Address
             // + '</p> <a class="save" href="#"> <img src="save.jpeg" height="25" width="25"></a>' //Save button
             +  '<div class="right">'
             + '</div>'
-
-            // + '</p> <a class="save" href="#"> <img src="save.jpeg" height="25" width="25"></a>' //Save button
-            + '<a href="/show/' + id + '"><button class = "view-reviews"> View Reviews</a></button>' //Button
+            + '<a href="/show/' + id + '"><button class = "btn waves-effect waves-light"> <span class = "reviews">View Reviews</span></a><i class="material-icons right">send</i></button>' //Button
+             marker['zomato_rating'] = zomato_rating;
+             marker['foodmap_rating'] = foodmap_rating;
 
           google.maps.event.addListener(marker, "click", function () {
             infoWindow.setContent(this['content']);
@@ -127,8 +126,62 @@
         };
 
         });
-        
-       
+
+        function topAlgo() {
+          var top = [];
+          top10 = [];
+
+          function compare(a,b) {
+            if (a.rating < b.rating)
+              return -1;
+            if (a.rating > b.rating)
+              return 1;
+            return 0;
+          }
+          
+          top = markerArr.sort(compare).reverse();
+
+          for (var i = 0; i < 10; i++) {
+            if (top[i]) {
+              top10.push(top[i]);
+            }  
+          }
+          displayTop(top10);
+        }
+
+        function displayTop(top10) {
+          content = [];
+
+          $( ".container" ).remove();
+
+          for (var i = 0; i < top10.length; i++) {
+            content.push("<div class='container'>"
+                          + "<div class='row headers'>"
+                            + "<div class='col s8'>"
+                              + "<a href='/show/" + top10[i].id + "'><h5>" + top10[i].name + "</h5></a>"
+                            + "</div>"
+                              + "<div class='col s4 right-align'>"
+                                + "<h6>" + top10[i].rating + "&nbsp;</h6>"
+                              + "</div>"
+                            + "</div>"
+                            + "<div class='row valign-wrapper'>"
+                              + "<div class='col s8'>"
+                                + "<h7>" + top10[i].locality + "</h7>"
+                                + "<h8>" + top10[i].address + "</h8>"
+                              + "</div>"
+                            + "<div class='col s4 right-align valign z-rating'>"
+                              + "<h6>" + top10[i].zomato_rating + "<small>/ 5</small></h6>"
+                              + "<h8>on Zomato</h8>"
+                            + "</div>"
+                          + "</div>"
+                        + "</div>");
+          }
+
+          for (var i = content.length; i >= 0; i--) {
+            $(content[i]).insertAfter("#map");
+          }
+
+        }
       }
 
       function handleLocationError(browserHasGeolocation, infoWindow, pos) {
