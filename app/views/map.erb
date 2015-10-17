@@ -11,7 +11,7 @@
         padding: 0;
       }
       #map {
-        height: 90%;
+        height: 75%;
       }
     </style>
   </head>
@@ -110,11 +110,11 @@
             "<h3 class ='content-title'>" + title +'</h3> <hr/>' //Title
             + '<p class="card_rating">Rating: ' + foodmap_rating //Our rating
             + '<p class="zomato_rating">Zomato Rating: ' + zomato_rating + ' / 5</br></br>'//Rating
-            + address //Address
-            + '</p> <a class="save" href="#"> <img src="save.jpeg" height="25" width="25"></a>' //Save button
+            + "<span class = 'address'>" + address + "</span>" //Address
+            // + '</p> <a class="save" href="#"> <img src="save.jpeg" height="25" width="25"></a>' //Save button
             +  '<div class="right">'
             + '</div>'
-            + '<a href="/show/' + id + '"><button class = "view-reviews"> View Reviews</a></button>' //Button
+            + '<a href="/show/' + id + '"><button class = "btn waves-effect waves-light"> <span class = "reviews">View Reviews</span></a><i class="material-icons right">send</i></button>' //Button
              marker['zomato_rating'] = zomato_rating;
              marker['foodmap_rating'] = foodmap_rating;
 

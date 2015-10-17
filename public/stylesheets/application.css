@@ -16,18 +16,23 @@
 }
 
 .content-title {
-  font-size: 20px;
+  font-size: 25px;
   line-height: 35px;
 }
 
 .card_rating {
   font-size: 16px;
   line-height: 9px;
+  font-weight: bold;
 }
 
 .zomato_rating {
   font-size: 15px;
-  line-height: 18px;
+  line-height: 15px;
+}
+
+.address {
+  font-size: 12px;
 }
 
 .row.headers h1,
@@ -76,4 +81,8 @@
 
 .voted {
   color: blue;
+}
+
+.reviews {
+  color: white;
 }
