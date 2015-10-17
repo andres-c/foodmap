@@ -73,3 +73,21 @@
 .downvote {
   color: red;
 }
+
+.fixed {
+  display: block;
+  position: fixed;
+  background-color: white;
+  width: 70%;
+
+  margin: auto;
+}
+
+.scrollable {
+  margin-top: 800px;
+  display: block;
+  overflow-y: auto;
+  max-height: 100%;
+  width: 100%;
+  margin: auto;
+}
