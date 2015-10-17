@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row headers">
+    <div class="col s8">
+    <form type="submit" method="get" action="/show/:id">
+      <a href="/show/id"><h5><%= @restaurant.name %></h5></a>
+    </form>
+    </div>
+    <div class="col s4 right-align">
+      <h6><%= @restaurant.voted_rating %>&nbsp;</h6>
+    </div>
+  </div>
+  <div class="row valign-wrapper">
+    <div class="col s8">
+      <h7><%= @restaurant.locality %></h7>
+      <h8><%= @restaurant.address %></h8>
+    </div>
+    <div class="col s4 right-align valign z-rating">
+      <h6><%= @restaurant.zomato_rating %> <small>/ 5</small></h6>
+      <h8>on Zomato</h8>
+    </div>
+  </div>
+</div>
+
