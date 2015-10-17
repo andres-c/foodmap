@@ -11,7 +11,7 @@
         padding: 0;
       }
       #map {
-        height: 80%;
+        height: 90%;
       }
     </style>
   </head>
@@ -32,6 +32,7 @@
     
     </div>
     <script>
+
       function initMap() {
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(function(position) {
@@ -62,7 +63,7 @@
       function loadMap(position) {
         var map = new google.maps.Map(document.getElementById('map'), {
           center: position,
-          zoom: 15,
+          zoom: 16,
         });
 
         markerArr = [];
@@ -80,6 +81,7 @@
           } )
             .done (function(restaurants){
               var image = 'restaurant.png';
+              // window.top10 = [];
 
               var data = JSON.parse(restaurants);
               for (var i = 0; i < data.length; i++) {
@@ -103,6 +105,7 @@
                   showInfo(marker, search.name, search.zomato_rating, search.rating, search.address, search.id);
                 }
               };
+              topAlgo();
             });
 
 
@@ -115,8 +118,10 @@
             + '</div>'
             + '<p>Rating: ' + foodmap_rating //Our rating
             + '<p>Zomato Rating: ' + zomato_rating + '</br></br>'//Rating
-            // + '</p> <a class="save" href="#"> <img src="save.jpeg" height="25" width="25"></a>' //Save button
             + '<a href="/show/' + id + '"><button class = "view-reviews"> View Reviews</a></button>' //Button
+
+            marker['zomato_rating'] = zomato_rating;
+            marker['foodmap_rating'] = foodmap_rating;
 
           google.maps.event.addListener(marker, "click", function () {
             infoWindow.setContent(this['content']);
@@ -126,6 +131,19 @@
         };
 
         });
+
+        function topAlgo() {
+          top10 = [];
+
+          for (var i = 0; i < markerArr.length; i++) {
+            if (Number(markerArr[i].foodmap_rating)) {
+              top10.push(Number(markerArr[i].foodmap_rating));
+            } else {
+              top10.push(Number(markerArr[i].zomato_rating) * 20);
+            }
+          }  
+          top10;
+        }
         
        
       }
