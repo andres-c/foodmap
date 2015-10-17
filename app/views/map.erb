@@ -100,21 +100,23 @@
                   markerArr.push(marker);
                   idArr.push(marker.id);
 
-                  showInfo(marker, search.name, search.zomato_rating, search.address, search.id);
+                  showInfo(marker, search.name, search.zomato_rating, search.rating, search.address, search.id);
                 }
               };
             });
 
 
-        function showInfo(marker, title, rating, address, id) {
+        function showInfo(marker, title, zomato_rating, foodmap_rating, address, id) {
           marker['content'] = 
-            "<h3 class ='content-title'>" + title +'</h3>' //Title
-            + '<p class ="card_rating">Rating: ' + rating  +'<hr/>'//Rating
+            "<h3 class ='content-title'>" + title +'</h3> <hr/>' //Title
             + address //Address
             // + '</p> <a class="save" href="#"> <img src="save.jpeg" height="25" width="25"></a>' //Save button
             +  '<div class="right">'
-            + '<a href="/show/' + id + '"><button class = "view-reviews"> View Reviews</a></button>' //Button
             + '</div>'
+            + '<p>Rating: ' + foodmap_rating //Our rating
+            + '<p>Zomato Rating: ' + zomato_rating + '</br></br>'//Rating
+            // + '</p> <a class="save" href="#"> <img src="save.jpeg" height="25" width="25"></a>' //Save button
+            + '<a href="/show/' + id + '"><button class = "view-reviews"> View Reviews</a></button>' //Button
 
           google.maps.event.addListener(marker, "click", function () {
             infoWindow.setContent(this['content']);

@@ -24,3 +24,46 @@
   font-size: 17px;
   line-height: 2px;
 }
+
+.row.headers h1,
+.row.headers h2 {
+  line-height: 45px;
+  margin-top: 45px;
+  display: inline-block;
+}
+
+.upvote-box {
+  height: 100px;
+  width: 100px;
+}
+
+.z-rating * {
+  line-height: 20px;
+}
+
+.updown {
+  display: inline-block;
+}
+
+.vote-button {
+  background:none!important;
+  border:none; 
+  padding:0!important;
+  font: inherit;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.vote-graphic {
+  font-size: 18px;
+}
+
+.vote-button.up,
+.vote-graphic.up {
+  color: green;
+}
+
+.vote-button.down,
+.vote-graphic.down {
+  color: red;
+}

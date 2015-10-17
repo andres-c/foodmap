@@ -1,14 +1,40 @@
 <div class="container">
   <div class="row headers">
-    <div class="col s6">
-      <h1><%= @restaurant[:name] %></h1>
+    <div class="col s8">
+      <h1><%= @restaurant.name %></h1>
     </div>
-    <div class="col s6 right-align">
-      <h2><%= @restaurant[:zomato_rating] %> <small>/ 5</small></h2>
+    <div class="col s4 right-align">
+      <h2><%= @restaurant.voted_rating %>&nbsp;</h2>
+      <div class="updown">
+        <% if session[:user_id] %>
+          <form method="post" action="vote">
+            <input type="hidden" name="restaurant_id" value="<%= @restaurant.id %>"/>
+            <input type="hidden" name="value" value="1"/>
+            <input class="vote-button up" type="submit" value="&#x25B2;"/>
+          </form>
+          <form method="post" action="vote">
+            <input type="hidden" name="restaurant_id" value="<%= @restaurant.id %>"/>
+            <input type="hidden" name="value" value="-1"/>
+            <input class="vote-button down" type="submit" value="&#x25BC;"/>
+          </form>
+        <% else %>
+          <h6 class="vote-graphic up">&#x25B2;</h6>
+          <h6 class="vote-graphic down">&#x25BC;</h6>
+        <% end %>
+      </div>
     </div>
   </div>
-  <h4><%= @restaurant[:locality] %></h4>
-  <h5><%= @restaurant[:address] %></h5>
+  <div class="row valign-wrapper">
+    <div class="col s8">
+      <h4><%= @restaurant.locality %></h4>
+      <h5><%= @restaurant.address %></h5>
+    </div>
+    <div class="col s4 right-align valign z-rating">
+      <h3><%= @restaurant.zomato_rating %> <small>/ 5</small></h3>
+      <h6>on Zomato</h6>
+    </div>
+  </div>
+    
 
   <%= '<h3>Reviews</h3>' if @restaurant.reviews %>
   <% @restaurant.reviews.each do |review| %>
