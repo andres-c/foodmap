@@ -46,24 +46,25 @@
 }
 
 .vote-button {
+  font-size: 18px;
+}
+
+.vote-button .button {
   background:none!important;
   border:none; 
   padding:0!important;
   font: inherit;
   cursor: pointer;
-  font-size: 18px;
 }
 
 .vote-graphic {
   font-size: 18px;
 }
 
-.vote-button.up,
-.vote-graphic.up {
+.upvote {
   color: green;
 }
 
-.vote-button.down,
-.vote-graphic.down {
+.downvote {
   color: red;
 }
