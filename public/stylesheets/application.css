@@ -68,3 +68,7 @@
 .downvote {
   color: red;
 }
+
+.voted {
+  color: blue;
+}

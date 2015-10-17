@@ -25,7 +25,21 @@ end
 get '/show/:id' do
   if session[:user_id]
     @user = User.find(session[:user_id])
-  end  
+  end
+
   @restaurant = Restaurant.find(params[:id])
+
+  prior_vote = Vote.where(restaurant_id: params[:id]).find_by(user_id: session[:user_id])
+  if prior_vote && prior_vote.value == 1
+    @upvote = 'voted'
+    @downvote = 'downvote'
+  elsif prior_vote && prior_vote.value == -1
+    @upvote = 'upvote'
+    @downvote = 'voted'
+  else
+    @upvote = 'upvote'
+    @downvote = 'downvote'
+  end
+    
   erb :show
 end
