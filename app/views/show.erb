@@ -9,16 +9,16 @@
           <form method="post" action="vote">
             <input type="hidden" name="restaurant_id" value="<%= @restaurant.id %>"/>
             <input type="hidden" name="value" value="1"/>
-            <span class="vote-button upvote"><%= @restaurant.upvotes %> <input class="button" type="submit" value="&#x25B2;"/></span>
+            <span class="vote-button <%= @upvote %>"><%= @restaurant.upvotes %> <input class="button" type="submit" value="&#x25B2;"/></span>
           </form>
           <form method="post" action="vote">
             <input type="hidden" name="restaurant_id" value="<%= @restaurant.id %>"/>
             <input type="hidden" name="value" value="-1"/>
-            <span class="vote-button downvote"><%= @restaurant.downvotes %> <input class="button" type="submit" value="&#x25BC;"/></span>
+            <span class="vote-button <%= @downvote %>"><%= @restaurant.downvotes %> <input class="button" type="submit" value="&#x25BC;"/></span>
           </form>
         <% else %>
-          <h6 class="vote-graphic upvote"><%= @restaurant.upvotes %> &#x25B2;</h6>
-          <h6 class="vote-graphic downvote"><%= @restaurant.downvotes %> &#x25BC;</h6>
+          <h6 class="vote-graphic <%= @upvote %>"><%= @restaurant.upvotes %> &#x25B2;</h6>
+          <h6 class="vote-graphic <%= @downvote %>"><%= @restaurant.downvotes %> &#x25BC;</h6>
         <% end %>
       </div>
       <h2>&nbsp;<%= @restaurant.voted_rating %></h2>
