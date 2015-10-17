@@ -7,6 +7,7 @@ post '/restaumap' do
       address: restaurant.address,
       rating: restaurant.voted_rating,
       zomato_rating: restaurant.zomato_rating,
+      locality: restaurant.locality,
       latitude: restaurant.latitude,
       longitude: restaurant.longitude
     }

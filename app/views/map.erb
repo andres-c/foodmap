@@ -109,7 +109,7 @@
           marker['content'] = 
             "<h3 class ='content-title'>" + title +'</h3> <hr/>' //Title
             + '<p class="card_rating">Rating: ' + foodmap_rating //Our rating
-            + '<p class="zomato_rating">Zomato Rating: ' + zomato_rating + '</br></br>'//Rating
+            + '<p class="zomato_rating">Zomato Rating: ' + zomato_rating + ' / 5</br></br>'//Rating
             + address //Address
             + '</p> <a class="save" href="#"> <img src="save.jpeg" height="25" width="25"></a>' //Save button
             +  '<div class="right">'
@@ -146,9 +146,42 @@
               top10.push(top[i]);
             }  
           }
-          top10;
+          displayTop(top10);
         }
-       
+
+        function displayTop(top10) {
+          content = [];
+
+          $( ".container" ).remove();
+
+          for (var i = 0; i < top10.length; i++) {
+            content.push("<div class='container'>"
+                          + "<div class='row headers'>"
+                            + "<div class='col s8'>"
+                              + "<a href='/show/" + top10[i].id + "'><h5>" + top10[i].name + "</h5></a>"
+                            + "</div>"
+                              + "<div class='col s4 right-align'>"
+                                + "<h6>" + top10[i].rating + "&nbsp;</h6>"
+                              + "</div>"
+                            + "</div>"
+                            + "<div class='row valign-wrapper'>"
+                              + "<div class='col s8'>"
+                                + "<h7>" + top10[i].locality + "</h7>"
+                                + "<h8>" + top10[i].address + "</h8>"
+                              + "</div>"
+                            + "<div class='col s4 right-align valign z-rating'>"
+                              + "<h6>" + top10[i].zomato_rating + "<small>/ 5</small></h6>"
+                              + "<h8>on Zomato</h8>"
+                            + "</div>"
+                          + "</div>"
+                        + "</div>");
+          }
+
+          for (var i = content.length; i >= 0; i--) {
+            $(content[i]).insertAfter("#map");
+          }
+
+        }
       }
 
       function handleLocationError(browserHasGeolocation, infoWindow, pos) {
