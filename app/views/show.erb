@@ -25,25 +25,26 @@
         <h2>&nbsp;<%= @restaurant.voted_rating %></h2>
       </div>
     </div>
-      <div class="row valign-wrapper">
-        <div class="col s8">
-          <h4><%= @restaurant.locality %></h4>
-          <h5><%= @restaurant.address %></h5>
-        </div>
-        <div class="col s4 right-align valign z-rating">
-          <h3><%= @restaurant.zomato_rating %> <small>/ 5</small></h3>
-          <h6>on Zomato</h6>
-        </div>
+    <div class="row valign-wrapper">
+      <div class="col s8">
+        <h4><%= @restaurant.locality %></h4>
+        <h5><%= @restaurant.address %></h5>
       </div>
-    <h3>Reviews</h3>
-  <!-- </div> -->
-  <!-- <div class="scrollable"> -->
+      <div class="col s4 right-align valign z-rating">
+        <h3><%= @restaurant.zomato_rating %> <small>/ 5</small></h3>
+        <h6>on Zomato</h6>
+      </div>
+    </div>
     <% if @restaurant.reviews %>
-      <% @restaurant.reviews.each do |review| %>
-        <hr/>
+      <h3>Reviews</h3>
+      <hr/>    
+    <% end %>  
+    <% if @restaurant.reviews %>
+      <% @restaurant.reviews.each_with_index do |review, index| %>
         <h6><%= "<strong>#{review.rating}</strong> - #{review.username}" %></h6>
         <p><%= review.body %></p>
         <p><small>Posted on <%= review.created_at.to_date.strftime("%B %y, %Y") %></small></p>
+        <%= '<hr/>' unless index == @restaurant.reviews.length - 1 %>
       <% end %>
     <% end %>
   <!-- </div> -->

@@ -20,7 +20,7 @@ class Vote < ActiveRecord::Base
   end
 
   def decrement_restaurant
-if value == 1
+    if value == 1
       restaurant.upvotes -= 1
     elsif value == -1 
       restaurant.downvotes -= 1
