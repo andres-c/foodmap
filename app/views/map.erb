@@ -66,7 +66,7 @@
           zoom: 16,
         });
 
-        markerArr = [];
+        // markerArr = [];
         idArr = [];
         
         infoWindow = new google.maps.InfoWindow();
@@ -81,15 +81,15 @@
           } )
             .done (function(restaurants){
               var image = 'restaurant.png';
-              // window.top10 = [];
+              markerArr = [];
+
 
               var data = JSON.parse(restaurants);
               for (var i = 0; i < data.length; i++) {
                 search = data[i];
+                markerArr.push(data[i]);
 
-                // debugger
-
-                if ($.inArray(search.id, idArr) < 0) { 
+                if ($.inArray(search.id, idArr) < 0) { //if statement is false it will return -1
                   var marker = new google.maps.Marker({
                     position: {lat: Number(search.latitude), lng: Number(search.longitude)}, 
                     map: map,
@@ -99,7 +99,6 @@
                     id: search.id
                   });
 
-                  markerArr.push(marker);
                   idArr.push(marker.id);
 
                   showInfo(marker, search.name, search.zomato_rating, search.rating, search.address, search.id);
@@ -107,7 +106,6 @@
               };
               topAlgo();
             });
-
 
         function showInfo(marker, title, zomato_rating, foodmap_rating, address, id) {
           marker['content'] = 
@@ -142,9 +140,8 @@
               top10.push(Number(markerArr[i].zomato_rating) * 20);
             }
           }  
-          top10;
+          top10.sort(function(a,b){return b-a});
         }
-        
        
       }
 
