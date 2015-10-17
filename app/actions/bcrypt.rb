@@ -5,9 +5,9 @@ post '/login' do
  )
  if user and user.authenticate(params[:password])
    session[:user_id] = user.id
-   redirect '/map'
+   redirect params[:fullpath]
  else
-   redirect '/map'
+   redirect params[:fullpath]
  end
 end
 
@@ -21,13 +21,13 @@ post '/signup' do
  )
   if @user.save
     session[:user_id] = @user.id
-    redirect '/map'
+    redirect params[:fullpath]
   else
-    redirect '/map'
+    redirect params[:fullpath]
   end
 end
 
 post "/logout" do
- session.delete(:user_id)
-  redirect '/map'
+  session.delete(:user_id)
+  redirect params[:fullpath]
 end
