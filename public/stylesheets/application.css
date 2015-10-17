@@ -21,8 +21,13 @@
 }
 
 .card_rating {
-  font-size: 17px;
-  line-height: 2px;
+  font-size: 16px;
+  line-height: 9px;
+}
+
+.zomato_rating {
+  font-size: 15px;
+  line-height: 18px;
 }
 
 .row.headers h1,
@@ -46,24 +51,25 @@
 }
 
 .vote-button {
+  font-size: 18px;
+}
+
+.vote-button .button {
   background:none!important;
   border:none; 
   padding:0!important;
   font: inherit;
   cursor: pointer;
-  font-size: 18px;
 }
 
 .vote-graphic {
   font-size: 18px;
 }
 
-.vote-button.up,
-.vote-graphic.up {
+.upvote {
   color: green;
 }
 
-.vote-button.down,
-.vote-graphic.down {
+.downvote {
   color: red;
 }
