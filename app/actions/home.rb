@@ -23,6 +23,9 @@ post '/show/vote' do
 end
 
 get '/show/:id' do
+  if session[:user_id]
+    @user = User.find(session[:user_id])
+  end  
   @restaurant = Restaurant.find(params[:id])
   erb :show
 end
