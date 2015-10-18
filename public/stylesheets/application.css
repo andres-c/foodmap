@@ -80,7 +80,7 @@
 }
 
 
-.fixed {
+/*.fixed {
   display: block;
   position: fixed;
   background-color: white;
@@ -96,6 +96,7 @@
   max-height: 100%;
   width: 100%;
   margin: auto;
+}*/
 
 .voted {
   color: blue;
@@ -103,4 +104,21 @@
 
 .reviews {
   color: white;
+}
+
+.totalContainer {
+  float: left;
+  width: 15%;  
+  overflow-y: scroll;
+  max-height: 100%;
+}
+
+.totalContainer .container {
+  margin-left: 5%;
+  margin-right: 5%;
+  width: 90%;
+}
+
+h6 {
+  margin: 0.7rem 0 0.4rem 0;
 }

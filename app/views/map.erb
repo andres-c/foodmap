@@ -6,16 +6,18 @@
     <meta charset="utf-8">
     <style>
       html, body {
-        height: 100%;
+        height: 97%;
         margin: 0;
         padding: 0;
       }
       #map {
-        height: 75%;
+        height: 100%;
+        width: 100%;
       }
     </style>
   </head>
   <body>
+    <div class="totalContainer"></div>
     <div id="map">
       
       <div class="preloader-wrapper big active">
@@ -65,8 +67,9 @@
           center: position,
           zoom: 16,
         });
-
+        
         idArr = [];    
+
         infoWindow = new google.maps.InfoWindow();
 
         google.maps.event.addListener(map, 'idle', function() {
@@ -102,6 +105,7 @@
                   showInfo(marker, search.name, search.zomato_rating, search.rating, search.address, search.id);
                 }
               };
+              $("#map").css("width", "85%");
               topAlgo();
             });
 
@@ -115,8 +119,10 @@
             +  '<div class="right">'
             + '</div>'
             + '<a href="/show/' + id + '"><button class = "btn waves-effect waves-light"> <span class = "reviews">View Reviews</span></a><i class="material-icons right">send</i></button>' //Button
-             marker['zomato_rating'] = zomato_rating;
-             marker['foodmap_rating'] = foodmap_rating;
+             
+
+         marker['zomato_rating'] = zomato_rating;
+         marker['foodmap_rating'] = foodmap_rating;
 
           google.maps.event.addListener(marker, "click", function () {
             infoWindow.setContent(this['content']);
@@ -160,26 +166,30 @@
                             + "<div class='col s8'>"
                               + "<a href='/show/" + top10[i].id + "'><h5>" + top10[i].name + "</h5></a>"
                             + "</div>"
-                              + "<div class='col s4 right-align'>"
-                                + "<h6>" + top10[i].rating + "&nbsp;</h6>"
+                              + "<div class='col s4 right-align foodmapScore'>"
+                                + "<h6>Rating: <strong>" + top10[i].rating + "</strong>&nbsp;</h6>"
                               + "</div>"
                             + "</div>"
                             + "<div class='row valign-wrapper'>"
                               + "<div class='col s8'>"
-                                + "<h7>" + top10[i].locality + "</h7>"
-                                + "<h8>" + top10[i].address + "</h8>"
+                                + "<h7>" + top10[i].locality + "</h7></br>"
+                                + "<h8><span class='address'>" + top10[i].address + "</span></h8>"
                               + "</div>"
-                            + "<div class='col s4 right-align valign z-rating'>"
-                              + "<h6>" + top10[i].zomato_rating + "<small>/ 5</small></h6>"
-                              + "<h8>on Zomato</h8>"
-                            + "</div>"
+                            // + "<div class='col s4 right-align valign z-rating'>"
+                            //   + "<h6>" + top10[i].zomato_rating + "<small>/ 5</small></h6>"
+                            //   + "<h8>on Zomato</h8>"
+                            // + "</div>"
                           + "</div>"
-                        + "</div>");
+                        + "<hr></div>");
           }
 
-          for (var i = content.length; i >= 0; i--) {
-            $(content[i]).insertAfter("#map");
+
+
+          for (var i = 0; i < content.length; i++) {
+            $(content[i]).insertBefore("#map");
           }
+
+          $(".totalContainer").append( $( ".container" ) );
 
         }
       }
