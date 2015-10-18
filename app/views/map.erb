@@ -113,14 +113,14 @@
 
         function showInfo(marker, title, zomato_rating, foodmap_rating, address, id) {
           marker['content'] = 
-            "<h3 class ='content-title'>" + title +'</h3> <hr/>' //Title
+            "<h3 class ='content-title'>" + title +'</h3>' //Title
+            + "<span class = 'address'>" + address + "</span> <hr/>" //Address
             + '<p class="card_rating">Rating: ' + foodmap_rating //Our rating
             + '<p class="zomato_rating">Zomato Rating: ' + zomato_rating + ' / 5</br></br>'//Rating
-            + "<span class = 'address'>" + address + "</span>" //Address
             // + '</p> <a class="save" href="#"> <img src="save.jpeg" height="25" width="25"></a>' //Save button
-            +  '<div class="right">'
-            + '</div>'
-            + '<a href="/show/' + id + '"><button class = "btn waves-effect waves-light"> <span class = "reviews">View Reviews</span></a><i class="material-icons right">send</i></button>' //Button
+            // +  '<div class="right">'
+            // + '</div>'
+            + '<a href="/show/' + id + '"><button class = "btn waves-effect waves-light blue"> <span class = "reviews">View Reviews</span></a><i class="material-icons right">send</i></button>' //Button
              
 
          marker['zomato_rating'] = zomato_rating;
