@@ -79,18 +79,18 @@
   color: red;
 }
 
-
-/*.fixed {
+/*
+.fixed {
   display: block;
   position: fixed;
   background-color: white;
   width: 70%;
-
   margin: auto;
 }
 
 .scrollable {
-  margin-top: 800px;
+  padding-top: 406px;
+  margin-top: 50px;
   display: block;
   overflow-y: auto;
   max-height: 100%;

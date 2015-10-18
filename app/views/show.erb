@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="fixed">
+<!--   <div class="fixed"> -->
     <div class="row headers">
       <div class="col s8">
         <h1><%= @restaurant.name %></h1>
@@ -39,8 +39,6 @@
       <h3>Reviews</h3>
       <hr/>    
     <% end %>  
-  </div>
-  <div class="scrollable">
     <% if @restaurant.reviews %>
       <% @restaurant.reviews.each_with_index do |review, index| %>
         <h6><%= "<strong>#{review.rating}</strong> - #{review.username}" %></h6>
@@ -49,5 +47,5 @@
         <%= '<hr/>' unless index == @restaurant.reviews.length - 1 %>
       <% end %>
     <% end %>
-  </div>
+  <!-- </div> -->
 </div>
