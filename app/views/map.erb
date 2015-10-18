@@ -12,7 +12,9 @@
       }
       #map {
         height: 100%;
-        width: 100%;
+        /*width: 100%;*/
+        width: 85%;
+        float: right;
       }
     </style>
   </head>
@@ -105,8 +107,8 @@
                   showInfo(marker, search.name, search.zomato_rating, search.rating, search.address, search.id);
                 }
               };
-              $("#map").css("width", "85%");
               topAlgo();
+              // $("#map").css("width", "85%");
             });
 
         function showInfo(marker, title, zomato_rating, foodmap_rating, address, id) {
