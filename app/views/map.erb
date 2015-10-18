@@ -6,16 +6,20 @@
     <meta charset="utf-8">
     <style>
       html, body {
-        height: 100%;
+        height: 97%;
         margin: 0;
         padding: 0;
       }
       #map {
-        height: 90%;
+        height: 100%;
+        /*width: 100%;*/
+        width: 85%;
+        float: right;
       }
     </style>
   </head>
   <body>
+    <div class="totalContainer"></div>
     <div id="map">
       
       <div class="preloader-wrapper big active">
@@ -65,8 +69,9 @@
           center: position,
           zoom: 16,
         });
-
+        
         idArr = [];    
+
         infoWindow = new google.maps.InfoWindow();
 
         google.maps.event.addListener(map, 'idle', function() {
@@ -103,20 +108,23 @@
                 }
               };
               topAlgo();
+              // $("#map").css("width", "85%");
             });
 
         function showInfo(marker, title, zomato_rating, foodmap_rating, address, id) {
           marker['content'] = 
             "<h3 class ='content-title'>" + title +'</h3> <hr/>' //Title
             + '<p class="card_rating">Rating: ' + foodmap_rating //Our rating
-            + '<p class="zomato_rating">Zomato Rating: ' + zomato_rating + '</br></br>'//Rating
-            + address //Address
-            + '</p> <a class="save" href="#"> <img src="save.jpeg" height="25" width="25"></a>' //Save button
+            + '<p class="zomato_rating">Zomato Rating: ' + zomato_rating + ' / 5</br></br>'//Rating
+            + "<span class = 'address'>" + address + "</span>" //Address
+            // + '</p> <a class="save" href="#"> <img src="save.jpeg" height="25" width="25"></a>' //Save button
             +  '<div class="right">'
             + '</div>'
-            + '<a href="/show/' + id + '"><button class = "view-reviews"> View Reviews</a></button>' //Button
-             marker['zomato_rating'] = zomato_rating;
-             marker['foodmap_rating'] = foodmap_rating;
+            + '<a href="/show/' + id + '"><button class = "btn waves-effect waves-light"> <span class = "reviews">View Reviews</span></a><i class="material-icons right">send</i></button>' //Button
+             
+
+         marker['zomato_rating'] = zomato_rating;
+         marker['foodmap_rating'] = foodmap_rating;
 
           google.maps.event.addListener(marker, "click", function () {
             infoWindow.setContent(this['content']);
@@ -146,9 +154,46 @@
               top10.push(top[i]);
             }  
           }
-          top10;
+          displayTop(top10);
         }
-       
+
+        function displayTop(top10) {
+          content = [];
+
+          $( ".container" ).remove();
+
+          for (var i = 0; i < top10.length; i++) {
+            content.push("<div class='container'>"
+                          + "<div class='row headers'>"
+                            + "<div class='col s8'>"
+                              + "<a href='/show/" + top10[i].id + "'><h5>" + top10[i].name + "</h5></a>"
+                            + "</div>"
+                              + "<div class='col s4 right-align foodmapScore'>"
+                                + "<h5><strong>" + top10[i].rating + "</strong>&nbsp;</h5>"
+                              + "</div>"
+                            + "</div>"
+                            + "<div class='row valign-wrapper'>"
+                              + "<div class='col s8'>"
+                                + "<h7>" + top10[i].locality + "</h7></br>"
+                                + "<h8><span class='address'>" + top10[i].address + "</span></h8>"
+                              + "</div>"
+                            // + "<div class='col s4 right-align valign z-rating'>"
+                            //   + "<h6>" + top10[i].zomato_rating + "<small>/ 5</small></h6>"
+                            //   + "<h8>on Zomato</h8>"
+                            // + "</div>"
+                          + "</div>"
+                        + "<hr></div>");
+          }
+
+
+
+          for (var i = 0; i < content.length; i++) {
+            $(content[i]).insertBefore("#map");
+          }
+
+          $(".totalContainer").append( $( ".container" ) );
+
+        }
       }
 
       function handleLocationError(browserHasGeolocation, infoWindow, pos) {

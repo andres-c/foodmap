@@ -10,6 +10,4 @@ $(document).ready(function() {
 //Opens sign_up_modal
 $(document).on("click", "#signup-button", function() {
   $('#sign_up_modal').openModal();
-  });
-
-
+});

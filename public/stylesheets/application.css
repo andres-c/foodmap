@@ -16,18 +16,23 @@
 }
 
 .content-title {
-  font-size: 20px;
+  font-size: 25px;
   line-height: 35px;
 }
 
 .card_rating {
   font-size: 16px;
   line-height: 9px;
+  font-weight: bold;
 }
 
 .zomato_rating {
   font-size: 15px;
-  line-height: 18px;
+  line-height: 15px;
+}
+
+.address {
+  font-size: 12px;
 }
 
 .row.headers h1,
@@ -74,6 +79,46 @@
   color: red;
 }
 
+/*
+.fixed {
+  display: block;
+  position: fixed;
+  background-color: white;
+  width: 70%;
+  margin: auto;
+}
+
+.scrollable {
+  padding-top: 406px;
+  margin-top: 50px;
+  display: block;
+  overflow-y: auto;
+  max-height: 100%;
+  width: 100%;
+  margin: auto;
+}*/
+
 .voted {
-  color: blue;
+  color: #2196F3;
+}
+
+.reviews {
+  color: white;
+}
+
+.totalContainer {
+  float: left;
+  width: 15%;  
+  overflow-y: scroll;
+  max-height: 100%;
+}
+
+.totalContainer .container {
+  margin-left: 5%;
+  margin-right: 5%;
+  width: 90%;
+}
+
+h6 {
+  margin: 0.7rem 0 0.4rem 0;
 }
