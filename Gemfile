@@ -14,6 +14,10 @@ gem 'puma'
 gem 'tux'
 gem 'bcrypt'
 
+group :production do
+  gem 'pg'
+end
+
 group :development, :test do
   gem 'pry'
   gem 'shotgun'
