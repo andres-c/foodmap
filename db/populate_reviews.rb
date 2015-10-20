@@ -1,6 +1,6 @@
 require 'open-uri'
 require_relative '../config/environment'
-require_relative 'zomato_key'
+# require_relative 'zomato_key'
 
 restaurants_processed = 0
 
@@ -11,7 +11,7 @@ Restaurant.all.each do |restaurant|
   api_query = open(
     "https://developers.zomato.com/api/v2.1/reviews?res_id=#{restaurant.zomato_id}&start=0&count=0",
     "Accept" => "application/json",
-    "user_key" => ZOMATO_KEY
+    "user_key" => ENV['ZOMATO_KEY']
   )
 
   result_string = ""
