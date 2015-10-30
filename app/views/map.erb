@@ -77,10 +77,10 @@
         google.maps.event.addListener(map, 'idle', function() {
           bounds = map.getBounds();
           $.post("/restaumap", {
-            lat1: bounds.Pa.I,
-            lat2: bounds.Pa.j,
-            lon1: bounds.La.I,
-            lon2: bounds.La.j
+            lat1: bounds.getNorthEast().lat(),
+            lon1: bounds.getNorthEast().lng(),
+            lat2: bounds.getSouthWest().lat(),
+            lon2: bounds.getSouthWest().lng()
           } )
             .done (function(restaurants){
               var image = 'restaurant.png';
