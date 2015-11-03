@@ -1,6 +1,6 @@
 require 'open-uri'
 require_relative '../config/environment'
-require_relative 'zomato_key'
+#require_relative 'zomato_key'
 
 result_count = 0
 
@@ -10,7 +10,7 @@ loop do
   api_query = open(
     "https://developers.zomato.com/api/v2.1/search?entity_id=89&entity_type=city&start=#{result_count}&count=20",
     "Accept" => "application/json",
-    "user_key" => ZOMATO_KEY
+    "user_key" => ENV['ZOMATO_KEY']
   )
 
   result_string = ""
