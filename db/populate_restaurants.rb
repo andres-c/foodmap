@@ -1,6 +1,7 @@
 require 'open-uri'
 require_relative '../config/environment'
-#require_relative 'zomato_key'
+
+# require_relative 'zomato_key'
 
 result_count = 0
 

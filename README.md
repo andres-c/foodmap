@@ -1,4 +1,6 @@
-## Needs Zomato API key in db/zomato_key.rb
+# https://jhfoodmap.herokuapp.com/
+
+## Local needs Zomato API key in db/zomato_key.rb
 echo "ZOMATO_KEY = 'api_key'" > db/zomato_key.rb
 from root of project directory, replacing api_key with your Zomato API key
 

@@ -12,8 +12,9 @@ post '/restaumap' do
   lat2 = [params[:lat1].to_f, params[:lat2].to_f].max
   lon1 = [params[:lon1].to_f, params[:lon2].to_f].min
   lon2 = [params[:lon1].to_f, params[:lon2].to_f].max
-  Restaurant.where("latitude BETWEEN #{lat1} AND #{lat2} AND longitude BETWEEN #{lon1} AND #{lon2}").map do |restaurant|   
-   {
+
+  Restaurant.where("latitude BETWEEN #{lat1} AND #{lat2} AND longitude BETWEEN #{lon1} AND #{lon2}").map do |restaurant|
+    {
       id: restaurant.id,
       name: restaurant.name,
       address: restaurant.address,

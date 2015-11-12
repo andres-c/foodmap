@@ -15,6 +15,10 @@ gem 'tux'
 gem 'bcrypt'
 gem 'pg'
 
+group :production do
+  gem 'pg'
+end
+
 group :development, :test do
   gem 'pry'
   gem 'shotgun'

@@ -1,5 +1,6 @@
 require 'open-uri'
 require_relative '../config/environment'
+
 #require_relative 'zomato_key'
 
 restaurants_processed = 0
